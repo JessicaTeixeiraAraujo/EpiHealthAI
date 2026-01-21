@@ -47,19 +47,42 @@ The project will utilize publicly available health and epidemiological data prov
 - Multidisciplinary collaboration between technical and health domain experts  
 - Ongoing maintenance and monitoring of data pipelines and AI models  
 
-## Robots helper scripts
+## Robot Helper Scripts
 
-## Test metrics dashboard
+The project includes helper scripts (robots) responsible for automating repetitive and operational tasks across the data pipeline and application lifecycle.
 
-## Pipeline steps
+- Automated data download from public health sources (e.g., DATASUS, official bulletins)
+- Scheduled data ingestion and updates
+- Data validation and integrity checks
+- Preprocessing and normalization of raw datasets
+- Logging and monitoring of pipeline execution
+- Error handling and alerting mechanisms
 
-Insert steps
+## Test Metrics Dashboard
 
-## Project structure
+A dedicated dashboard will be used to monitor system performance, data quality, and AI model behavior.
 
-Insert structure
+- Data ingestion success and failure rates
+- Data freshness and update frequency
+- Model accuracy and response consistency
+- Natural language query success rate
+- System latency and response time
+- Usage metrics and user interaction statistics
 
-## Architecture
+## Pipeline Steps
+
+- Data acquisition from official public health sources  
+- Raw data storage and versioning  
+- Data cleaning, normalization, and validation  
+- Feature extraction and data transformation  
+- AI model processing and inference  
+- Natural language interpretation and response generation  
+- Results delivery via user interface or API  
+- Logging, monitoring, and continuous improvement
+
+## Architecture and Project Structure
+
+Insert
 
 ## Key environment variables
 
