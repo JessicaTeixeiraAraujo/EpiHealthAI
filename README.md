@@ -2,42 +2,54 @@
 
 ## Overview
 
-Insert descripition
+This project focuses on the application of Artificial Intelligence (AI) to health and epidemiological data with the goal of making public health information more accessible, understandable, and user-friendly for citizens.
+By leveraging AI techniques such as natural language processing and intelligent data analysis the project aims to transform complex health and epidemiological data into clear, natural-language responses. This approach allows non-technical users to consult health-related information, indicators, and insights without requiring specialized knowledge in data science, epidemiology, or information systems.
+The initiative seeks to bridge the gap between technical health data and the general population by enabling more intuitive interactions between citizens and digital health systems. Ultimately, the project contributes to improved health literacy, transparency, and data-driven decision-making in public health contexts.
 
-## Project scope
+## Project Scope
 
-Insert scope
+The project will utilize publicly available health and epidemiological data provided by official Brazilian government sources, ensuring reliability, transparency, and consistency.
+
+### Data Sources
+- DATASUS: Official health information systems and datasets from the Brazilian Ministry of Health, including morbidity, mortality, hospitalizations, and epidemiological indicators.  
+  Source: https://datasus.saude.gov.br/transferencia-de-arquivos/
+
+- Official Epidemiological Bulletins: Periodic publications released by the Ministry of Health containing epidemiological analyses, surveillance updates, and public health reports.  
+  Source: https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/boletins
+
+### Scope Definition
+- Ingestion, processing, and analysis of structured and semi-structured public health data  
+- Application of Artificial Intelligence techniques to analyze epidemiological datasets  
+- Natural language interaction to allow citizens to query health data in an accessible manner  
+- Translation of technical health data into clear, non-technical language  
+- Support for public health monitoring, transparency, and data-driven insights  
 
 ## Prerequisites
 
-Insert requirements
+### Technical Requirements
+- Infrastructure for data storage and processing (cloud-based or on-premises)  
+- Programming environment suitable for data analysis and AI development (e.g., Python)  
+- Libraries and tools for data processing, machine learning, and natural language processing  
+- Mechanisms for periodic data ingestion and updates from public sources  
+
+### Data Requirements
+- Access to open and publicly available health and epidemiological datasets  
+- Data cleaning, normalization, and validation processes  
+- Availability of metadata and documentation to ensure correct interpretation  
+
+### Operational and Ethical Requirements
+- Compliance with data protection and privacy regulations (e.g., LGPD)  
+- Ethical and transparent use of Artificial Intelligence  
+- Clear communication guidelines to avoid misinterpretation of health information  
+
+### Human and Organizational Requirements
+- Basic understanding of epidemiology and public health concepts  
+- Multidisciplinary collaboration between technical and health domain experts  
+- Ongoing maintenance and monitoring of data pipelines and AI models  
 
 ## Robots helper scripts
 
-Automation helpers that live in `robots/` make repetitive tasks easier. Run them from the repository root using Git Bash, WSL, or any Unix-like shell:
-
-- `bash robots/aut_setup.sh`: creates (or recreates) `.venv`, upgrades `pip`, purges the cache, and installs dependencies from `requirements.txt`. Set `PYTHON_BIN="py -3.11"` or similar if you need a custom interpreter.
-- `bash robots/aut_extraction.sh`: downloads the latest SISAGUA vigilance ZIP, saves it under `backup/`, and extracts the CSVs so you can inspect or pre-process them offline.
-- `bash robots/aut_git.sh [--options]`: stages every change, prompts for a Conventional Commit-style message (unless `-m/--message` is provided), commits, and optionally pushes to the current branch. Pass `--no-push` to skip `git push`.
-
-Each script is idempotent and prints its progress so you can confirm every step succeeded.
-
-## Dependency locking
-
-Regenerate `uv.lock` whenever `requirements.txt` changes to keep deployments reproducible:
-
-```bash
-del uv.lock          # on macOS/Linux use: rm uv.lock
-uv pip compile requirements.txt -o uv.lock
-```
-
 ## Test metrics dashboard
-
-Visualize the latest pipeline metrics with Streamlit:
-
-```bash
-streamlit run dashboards/test_metrics_dashboard.py
-```
 
 ## Pipeline steps
 
@@ -48,14 +60,6 @@ Insert steps
 Insert structure
 
 ## Architecture
-
-The end-to-end solution follows a layered layout so each concern can be tested and evolved independently:
-
-- **Automation layer (`robots/`)** – `robots/aut_tests.sh` bootstraps `.venv`, installs dependencies, runs `pytest`, and (when available) launches the Streamlit metrics dashboard. Other helpers in `robots/` manage dataset extraction and Git automation.
-- **Core services (`script/python`)** – `aut.py` orchestrates ingestion, preprocessing, model execution (LLM, BERT, Hugging Face API, classical ML, or local pipelines), reporting, visualization, and notifications. Supporting modules (config, IO, modeling, reporting, visualization) encapsulate each responsibility.
-- **Testing layer (`tests/`)** – Every critical module has targeted unit tests (`tests/test_modeling_utils.py`, `tests/test_preprocessing_utils.py`, etc.). Running `python -m pytest` or `bash robots/aut_tests.sh` executes the suite. `pytest.ini` excludes helper directories (e.g., `dashboards/`) from discovery to keep runs deterministic.
-- **Quality dashboards (`dashboards/`)** – `dashboards/test_metrics_dashboard.py` visualizes `METRICS_FILE` via Streamlit, exposing backend metadata, vectorizer scores, classification reports, and feature-importance tables immediately after each run.
-- **Artifacts & observability** – Outputs under `output/` (tagged Excel, word clouds, distribution charts) plus `inputs/nlp_metrics.json` provide traceability and power both the dashboard and audit processes.
 
 ## Key environment variables
 
